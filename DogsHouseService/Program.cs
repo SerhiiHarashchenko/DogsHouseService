@@ -1,5 +1,6 @@
 using DogsHouseService.Data.Repositories;
 using DogsHouseService.Mapping;
+using DogsHouseService.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,8 @@ builder.Services.AddDbContext<DogsHouseServiceDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IDogRepository, DogRepository>();
+
+builder.Services.AddScoped<IDogService, DogService>();
 
 builder.Services.AddAutoMapper(typeof(DogProfile));
 
