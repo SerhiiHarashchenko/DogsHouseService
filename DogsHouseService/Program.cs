@@ -7,6 +7,8 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<DogsHouseServiceDbContext>(options =>
     options.UseSqlServer(connectionString));
 
+builder.Services.AddScoped<IDogRepository, DogRepository>();
+
 builder.Services.AddControllers();
 
 var app = builder.Build();
